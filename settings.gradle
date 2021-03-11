@@ -1,0 +1,6 @@
+rootProject.name = 'hfrp2c'
+
+include 'hfrp2c-core'
+include 'hfrp2c-springboot-starter'
+
+
