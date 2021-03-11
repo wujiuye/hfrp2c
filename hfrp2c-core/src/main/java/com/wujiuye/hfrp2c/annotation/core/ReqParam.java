@@ -1,4 +1,4 @@
-package com.wujiuye.hfrp2c.annotation;
+package com.wujiuye.hfrp2c.annotation.core;
 
 import java.lang.annotation.*;
 
@@ -6,15 +6,15 @@ import java.lang.annotation.*;
  * @author wujiuye 2020/07/01
  */
 @Retention(RetentionPolicy.RUNTIME)
-@Target(ElementType.METHOD)
+@Target(ElementType.PARAMETER)
 @Documented
-public @interface HttpGet {
+public @interface ReqParam {
 
     /**
-     * API路径
+     * 参数名
      *
      * @return
      */
-    String value() default "/";
+    String value();
 
 }

@@ -37,10 +37,12 @@ public class HttpSupperRetryUtils {
             }
             boolean allow = false;
             int responseHttpStatusCode = response == null ? Integer.MIN_VALUE : response.getCode();
-            for (HttpSupperRetryAction.RetryRule rule : retryRule) {
-                if (rule.allowRetry(responseHttpStatusCode, exception)) {
-                    allow = true;
-                    break;
+            if (retryRule != null) {
+                for (HttpSupperRetryAction.RetryRule rule : retryRule) {
+                    if (rule.allowRetry(responseHttpStatusCode, exception)) {
+                        allow = true;
+                        break;
+                    }
                 }
             }
             if (!allow) {

@@ -11,7 +11,7 @@ group ext.group
 version ext.version
 
 dependencies {
-    compile("${group}:hotkit-util:2021.001.RC")
+    compile("${group}:hotkit-util:2021.002.RC")
     compile("${group}:hotkit-json:2021.001.RC")
     compile 'com.squareup.okhttp3:okhttp:4.2.2'
     compileOnly 'org.slf4j:slf4j-api:1.7.30'
