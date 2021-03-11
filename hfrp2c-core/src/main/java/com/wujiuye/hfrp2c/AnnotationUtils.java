@@ -1,7 +1,7 @@
 package com.wujiuye.hfrp2c;
 
-import com.wujiuye.hfrp2c.annotation.HttpGet;
-import com.wujiuye.hfrp2c.annotation.HttpPost;
+import com.wujiuye.hfrp2c.annotation.core.RpcGet;
+import com.wujiuye.hfrp2c.annotation.core.RpcPost;
 import com.wujiuye.hfrp2c.annotation.RetryStrategy;
 import com.wujiuye.hfrp2c.annotation.RpcClient;
 import com.wujiuye.hfrp2c.okhttp.HttpSupperRetryAction;
@@ -60,20 +60,20 @@ public class AnnotationUtils {
      * @return
      */
     public static RpcMetadata analysisMappingAnnotation(RpcClient rpcClient, Method method) {
-        HttpGet httpGet = method.getAnnotation(HttpGet.class);
-        HttpPost httpPost = method.getAnnotation(HttpPost.class);
-        if (httpGet == null && httpPost == null) {
+        RpcGet rpcGet = method.getAnnotation(RpcGet.class);
+        RpcPost rpcPost = method.getAnnotation(RpcPost.class);
+        if (rpcGet == null && rpcPost == null) {
             return null;
         }
         RpcMetadata.Builder builder = RpcMetadata.newBuilder();
         builder.url(AnnotationUtils.getValueByElExpression(rpcClient.url()));
-        if (httpGet != null) {
+        if (rpcGet != null) {
             builder.method(HttpMethod.GET);
-            builder.path(getValueByElExpression(httpGet.value()));
+            builder.path(getValueByElExpression(rpcGet.value()));
         }
-        if (httpPost != null) {
+        if (rpcPost != null) {
             builder.method(HttpMethod.POST);
-            builder.path(getValueByElExpression(httpPost.value()));
+            builder.path(getValueByElExpression(rpcPost.value()));
         }
         builder.retry(analysisRetryMetadata(rpcClient, method));
         builder.params(analysisParamMetadata(method));

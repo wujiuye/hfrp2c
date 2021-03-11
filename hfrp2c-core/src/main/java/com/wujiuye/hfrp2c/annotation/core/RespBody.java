@@ -1,4 +1,4 @@
-package com.wujiuye.hfrp2c.annotation;
+package com.wujiuye.hfrp2c.annotation.core;
 
 import java.lang.annotation.*;
 
@@ -6,7 +6,7 @@ import java.lang.annotation.*;
  * @author wujiuye 2020/07/01
  */
 @Retention(RetentionPolicy.RUNTIME)
-@Target(ElementType.PARAMETER)
+@Target(ElementType.METHOD)
 @Documented
-public @interface RequestBody {
+public @interface RespBody {
 }

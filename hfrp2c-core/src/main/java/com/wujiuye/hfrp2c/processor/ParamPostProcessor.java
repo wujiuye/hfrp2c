@@ -3,8 +3,8 @@ package com.wujiuye.hfrp2c.processor;
 import com.wujiuye.hfrp2c.ParamMetadata;
 import com.wujiuye.hfrp2c.HttpMethod;
 import com.wujiuye.hfrp2c.RpcMetadata;
-import com.wujiuye.hfrp2c.annotation.RequestBody;
-import com.wujiuye.hfrp2c.annotation.RequestParam;
+import com.wujiuye.hfrp2c.annotation.core.ReqBody;
+import com.wujiuye.hfrp2c.annotation.core.ReqParam;
 import com.wujiuye.hfrp2c.okhttp.HttpRequest;
 import com.wujiuye.hotkit.util.CollectionUtils;
 
@@ -42,7 +42,7 @@ public class ParamPostProcessor implements RequestPostProcessor {
             Annotation[] paramAnnotations = paramMetadata.getParamAnnotations();
             if (!CollectionUtils.isEmpty(paramAnnotations)) {
                 for (Annotation anno : paramAnnotations) {
-                    if (anno instanceof RequestParam) {
+                    if (anno instanceof ReqParam) {
                         if (!url.startsWith("?")) {
                             url = url.concat("?");
                         }
@@ -50,7 +50,7 @@ public class ParamPostProcessor implements RequestPostProcessor {
                             url = url.concat("&");
                         }
                         isFistParam = false;
-                        url = url.concat(((RequestParam) anno).value());
+                        url = url.concat(((ReqParam) anno).value());
                         url = url.concat("=");
                         url = url.concat(String.valueOf(args[paramMetadata.getParamIndexOnMethod()]));
                     }
@@ -65,7 +65,7 @@ public class ParamPostProcessor implements RequestPostProcessor {
             Annotation[] paramAnnotations = paramMetadata.getParamAnnotations();
             if (!CollectionUtils.isEmpty(paramAnnotations)) {
                 for (Annotation anno : paramAnnotations) {
-                    if (anno instanceof RequestBody) {
+                    if (anno instanceof ReqBody) {
                         return args[paramMetadata.getParamIndexOnMethod()];
                     }
                 }

@@ -1,4 +1,4 @@
-package com.wujiuye.hfrp2c.annotation;
+package com.wujiuye.hfrp2c.annotation.core;
 
 import java.lang.annotation.*;
 
@@ -8,13 +8,5 @@ import java.lang.annotation.*;
 @Retention(RetentionPolicy.RUNTIME)
 @Target(ElementType.PARAMETER)
 @Documented
-public @interface RequestParam {
-
-    /**
-     * 参数名
-     *
-     * @return
-     */
-    String value();
-
+public @interface ReqBody {
 }
